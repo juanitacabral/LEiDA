@@ -40,7 +40,7 @@ for s=1:N_sub
     % Load BOLD data and save it as "signaldata'
     disp(['  Subject ' num2str(s) ' from ' num2str(N_sub)])
     Subject=char(Subjects(s));
-    load('Subject_data.mat',Subject)
+    load('Aging_data.mat',Subject)
     eval(['signaldata = ' Subject '(:,1:N);']);
     eval(['clear ' Subject ';']);
     
