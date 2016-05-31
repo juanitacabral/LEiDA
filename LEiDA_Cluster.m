@@ -40,12 +40,13 @@ clear Leading_Eig
 
 %Kmeans clustering
 maxk=20;
-opt= statset('UseParallel',1); %,'UseSubstreams',1);
+% opt= statset('UseParallel',1); %,'UseSubstreams',1);
+% The options may vary according to the Matlab version
 Kmeans_results=cell(1,20);
 
-for k=2:maxk  
+parfor k=2:maxk  
     disp(['Calculating for ' num2str(k) 'clusters'])
-    [IDX, C, SUMD, D]=kmeans(X,k,'Distance','cityblock','Replicates',20,'Display','final','Options',opt);   
+    [IDX, C, SUMD, D]=kmeans(X,k,'Distance','cityblock','Replicates',20,'Display','final'); %,'Options',opt);   
     Kmeans_results{k}.IDX=IDX;
     Kmeans_results{k}.C=C; 
     Kmeans_results{k}.SUMD=SUMD; 
